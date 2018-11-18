@@ -4,6 +4,21 @@ namespace FlowControlLesson048
 {
     class MainClass
     {
+        public static int CalculateFactorial(int number)
+        {
+            if(number == 0)
+            {
+                return 1;
+            }
+
+            int result = number;
+            for (int i = number - 1; i > 0; i--)
+            {
+                result *= i; 
+            }
+
+            return result;
+        }
 
         public static void DoExercise_1()
         {
@@ -37,13 +52,21 @@ namespace FlowControlLesson048
             }
         }
 
+        public static void DoExercise_3()
+        {
+            Console.Write("Enter a number: ");
+            int number = int.Parse(Console.ReadLine());
+            int result = CalculateFactorial(number);
+            Console.WriteLine("The factorial of {0} is {1}", number, result);
+        }
+
         public static void Main(string[] args)
         {
             bool quit = false;
 
             while(!quit)
             {
-                Console.WriteLine("1. Divisible by 3\n2. Enter a number");
+                Console.WriteLine("1. Divisible by 3\n2. Enter a number\n3. Calculate factorial");
                 int exerciseNr = int.Parse(Console.ReadLine());
 
                 switch(exerciseNr)
@@ -53,6 +76,9 @@ namespace FlowControlLesson048
                         break;
                     case 2:
                         DoExercise_2();
+                        break;
+                    case 3:
+                        DoExercise_3();
                         break;
                     default:
                         Console.WriteLine("Exercise {0} unavailable", exerciseNr);
