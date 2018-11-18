@@ -20,6 +20,24 @@ namespace FlowControlLesson048
             return result;
         }
 
+        public static int GetMaxValue(int[] values)
+        {
+            int maxValue = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (i == 0)
+                {
+                    maxValue = values[i];
+                }
+                else
+                {
+                    maxValue = maxValue < values[i] ? values[i] : maxValue;
+                }
+            }
+
+            return maxValue;
+        }
+
         public static void DoExercise_1()
         {
             int counter = 0;
@@ -89,13 +107,23 @@ namespace FlowControlLesson048
             }
         }
 
+        public static void DoExercise_5()
+        {
+            Console.Write("Write a series of numbers separated by coma e.g 1,2,3,4: ");
+            string[] values = Console.ReadLine().Split(',');
+            int[] iValues = Array.ConvertAll<string, int>(values, int.Parse);
+
+            int maxValue = GetMaxValue(iValues);
+            Console.WriteLine("Max value is {0}", maxValue);
+        }
+
         public static void Main(string[] args)
         {
             bool quit = false;
 
             while(!quit)
             {
-                Console.WriteLine("1. Divisible by 3\n2. Enter a number\n3. Calculate factorial\n4. Random number");
+                Console.WriteLine("1. Divisible by 3\n2. Enter a number\n3. Calculate factorial\n4. Random number\n5. Find max value");
                 int exerciseNr = int.Parse(Console.ReadLine());
 
                 switch(exerciseNr)
@@ -111,6 +139,9 @@ namespace FlowControlLesson048
                         break;
                     case 4:
                         DoExercise_4();
+                        break;
+                    case 5:
+                        DoExercise_5();
                         break;
                     default:
                         Console.WriteLine("Exercise {0} unavailable", exerciseNr);
