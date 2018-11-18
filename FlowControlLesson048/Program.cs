@@ -60,13 +60,42 @@ namespace FlowControlLesson048
             Console.WriteLine("The factorial of {0} is {1}", number, result);
         }
 
+        public static void DoExercise_4()
+        {
+            Console.WriteLine("Guess a number between one and 10!");
+            Random random = new Random();
+            int randomValue = random.Next(1, 10);
+
+            int times = 0;
+            bool won = false;
+            do
+            {
+                times++;
+                Console.Write("Guess {0}: ", times);
+                int guess = int.Parse(Console.ReadLine());
+                if(guess == randomValue)
+                {
+                    won = true;
+                    break;
+                }
+            } while (times < 4);
+
+            if(won){
+                Console.WriteLine("You won!!!");
+            }
+            else
+            {
+                Console.WriteLine("You lost!!! The value was {0}", randomValue);
+            }
+        }
+
         public static void Main(string[] args)
         {
             bool quit = false;
 
             while(!quit)
             {
-                Console.WriteLine("1. Divisible by 3\n2. Enter a number\n3. Calculate factorial");
+                Console.WriteLine("1. Divisible by 3\n2. Enter a number\n3. Calculate factorial\n4. Random number");
                 int exerciseNr = int.Parse(Console.ReadLine());
 
                 switch(exerciseNr)
@@ -79,6 +108,9 @@ namespace FlowControlLesson048
                         break;
                     case 3:
                         DoExercise_3();
+                        break;
+                    case 4:
+                        DoExercise_4();
                         break;
                     default:
                         Console.WriteLine("Exercise {0} unavailable", exerciseNr);
